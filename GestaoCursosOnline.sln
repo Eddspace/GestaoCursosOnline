@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36310.24 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoCursosOnline", "GestaoCursosOnline\GestaoCursosOnline.csproj", "{290F1442-C53A-49CA-A7B0-879A4757BBDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{290F1442-C53A-49CA-A7B0-879A4757BBDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{290F1442-C53A-49CA-A7B0-879A4757BBDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{290F1442-C53A-49CA-A7B0-879A4757BBDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{290F1442-C53A-49CA-A7B0-879A4757BBDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09DFB964-DEF2-454F-B37F-EE85CCBD1BD6}
+	EndGlobalSection
+EndGlobal
