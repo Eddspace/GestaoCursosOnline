@@ -29,22 +29,97 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaInscricoesForm));
+            cbAlunos = new ComboBox();
+            lbCursosPorAluno = new ListBox();
+            btnNovaInscricao = new Button();
+            btnRemoverInscricao = new Button();
+            label1 = new Label();
+            label2 = new Label();
             SuspendLayout();
+            // 
+            // cbAlunos
+            // 
+            cbAlunos.FormattingEnabled = true;
+            cbAlunos.Location = new Point(12, 29);
+            cbAlunos.Name = "cbAlunos";
+            cbAlunos.Size = new Size(529, 25);
+            cbAlunos.TabIndex = 0;
+            // 
+            // lbCursosPorAluno
+            // 
+            lbCursosPorAluno.FormattingEnabled = true;
+            lbCursosPorAluno.ItemHeight = 17;
+            lbCursosPorAluno.Location = new Point(12, 97);
+            lbCursosPorAluno.Name = "lbCursosPorAluno";
+            lbCursosPorAluno.Size = new Size(529, 310);
+            lbCursosPorAluno.TabIndex = 1;
+            // 
+            // btnNovaInscricao
+            // 
+            btnNovaInscricao.BackColor = Color.WhiteSmoke;
+            btnNovaInscricao.Location = new Point(12, 419);
+            btnNovaInscricao.Name = "btnNovaInscricao";
+            btnNovaInscricao.Size = new Size(159, 52);
+            btnNovaInscricao.TabIndex = 2;
+            btnNovaInscricao.Text = "Nova\r\nInscrição";
+            btnNovaInscricao.UseVisualStyleBackColor = false;
+            // 
+            // btnRemoverInscricao
+            // 
+            btnRemoverInscricao.BackColor = Color.WhiteSmoke;
+            btnRemoverInscricao.Location = new Point(382, 419);
+            btnRemoverInscricao.Name = "btnRemoverInscricao";
+            btnRemoverInscricao.Size = new Size(159, 52);
+            btnRemoverInscricao.TabIndex = 3;
+            btnRemoverInscricao.Text = "Remover\r\nInscrição";
+            btnRemoverInscricao.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(126, 17);
+            label1.TabIndex = 4;
+            label1.Text = "Aluno a Perquisar:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 77);
+            label2.Name = "label2";
+            label2.Size = new Size(188, 17);
+            label2.TabIndex = 5;
+            label2.Text = "Lista do Aluno Selecionado:";
             // 
             // ConsultaInscricoesForm
             // 
             AutoScaleDimensions = new SizeF(9F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
-            ClientSize = new Size(1029, 510);
+            ClientSize = new Size(555, 481);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(btnRemoverInscricao);
+            Controls.Add(btnNovaInscricao);
+            Controls.Add(lbCursosPorAluno);
+            Controls.Add(cbAlunos);
             Font = new Font("Calisto MT", 11.25F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             Name = "ConsultaInscricoesForm";
             Text = "Consulta de Inscrições";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private ComboBox cbAlunos;
+        private ListBox lbCursosPorAluno;
+        private Button btnNovaInscricao;
+        private Button btnRemoverInscricao;
+        private Label label1;
+        private Label label2;
     }
 }
