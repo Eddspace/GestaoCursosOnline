@@ -122,6 +122,7 @@
             btnRemoverCurso.TabIndex = 6;
             btnRemoverCurso.Text = "Remover\r\nCurso";
             btnRemoverCurso.UseVisualStyleBackColor = false;
+            btnRemoverCurso.Click += btnRemoverCurso_Click;
             // 
             // lbCursos
             // 

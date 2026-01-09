@@ -1,4 +1,5 @@
 ﻿using GestaoCursosOnline.Models;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +18,10 @@ public partial class GestaoCursosForm : Form
 {
     bool NovoCurso;
     CursoModel cursoAnterior;
+    GestaoInscricoesForm formAnterior;
     SqlConnector connector;
 
-    public GestaoCursosForm()
+    public GestaoCursosForm(GestaoInscricoesForm gIF)
     {
         InitializeComponent();
 
@@ -27,15 +29,17 @@ public partial class GestaoCursosForm : Form
         NovoCurso = true; //define que estamos a criar um novo curso
 
         connector = new SqlConnector();
+        formAnterior = gIF;
     }
 
-    public GestaoCursosForm(CursoModel cursoSelecionado)
+    public GestaoCursosForm(CursoModel cursoSelecionado, GestaoInscricoesForm gIF)
     {
         InitializeComponent();
 
         dtpDataInicio.CustomFormat = "dd/MM/yyyy";
         NovoCurso = false; //define que estamos a editar um curso
         cursoAnterior = cursoSelecionado;
+        formAnterior = gIF;
 
         connector = new SqlConnector();
 
@@ -58,6 +62,7 @@ public partial class GestaoCursosForm : Form
             {
                 CursoModel model = new CursoModel(tbNome.Text, tbDesc.Text, Convert.ToInt32(nudCarga.Value), dtpDataInicio.Value);
                 connector.AdicionarCurso(model);
+                formAnterior.WireUpLists();
                 this.Close();
             }
             else
@@ -72,6 +77,7 @@ public partial class GestaoCursosForm : Form
             {
                 CursoModel model = new CursoModel(cursoAnterior.IdCurso, tbNome.Text, tbDesc.Text, Convert.ToInt32(nudCarga.Value), dtpDataInicio.Value);
                 connector.AtualizarCurso(model);
+                formAnterior.WireUpLists();
                 this.Close();
             }
             else

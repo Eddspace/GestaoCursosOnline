@@ -16,17 +16,19 @@ public partial class GestaoInscricoesForm : Form
     SqlConnector sqlConnector = new SqlConnector();
     List<CursoModel> cursos;
 
-    //TODO - WIREUP do outro lado?!?
     public GestaoInscricoesForm()
     {
         InitializeComponent();
-        cursos = sqlConnector.ListarCursos();
         WireUpLists();
     }
 
     public void WireUpLists()
     {
+        //lbAlunos.DataSource = null;
+        //lbAlunos.DataSource = alunos;
+        //lbAlunos.DisplayMember = "nome";
 
+        cursos = sqlConnector.ListarCursos();
         lbCursos.DataSource = null;
         lbCursos.DataSource = cursos;
         lbCursos.DisplayMember = "nome";
@@ -39,17 +41,38 @@ public partial class GestaoInscricoesForm : Form
 
     private void btnNovoCurso_Click(object sender, EventArgs e)
     {
-        GestaoCursosForm gcf = new GestaoCursosForm();
+        GestaoCursosForm gcf = new GestaoCursosForm(this);
         gcf.Show();
     }
 
     private void btnEditarCurso_Click(object sender, EventArgs e)
     {
-        CursoModel cursoSelecionado = (CursoModel)lbCursos.SelectedItem;
+        if (lbCursos.SelectedItem != null)
+        {
+            CursoModel cursoSelecionado = (CursoModel)lbCursos.SelectedItem;
 
-        GestaoCursosForm gcf = new GestaoCursosForm(cursoSelecionado);
-        gcf.Show();
+            GestaoCursosForm gcf = new GestaoCursosForm(cursoSelecionado, this);
+            gcf.Show();
+
+        }
+        else
+        {
+            MessageBox.Show("Selecione um curso para editar", "Erro");
+        }
+
     }
 
-
+    private void btnRemoverCurso_Click(object sender, EventArgs e)
+    {
+        if (lbCursos.SelectedItem != null)
+        {
+            CursoModel cursoSelecionado = (CursoModel)lbCursos.SelectedItem;
+            sqlConnector.RemoverCurso(cursoSelecionado);
+            WireUpLists();
+        }
+        else
+        {
+            MessageBox.Show("Selecione um curso para eliminar", "Erro");
+        }
+    }
 }
