@@ -17,4 +17,12 @@ public class AlunoModel
     public DateTime DataNascimento { get; set; }
 
     public string Telefone { get; set; }
+
+    public AlunoModel(string nome, string email, DateTime dataNascimento, string telefone)
+    {
+        Nome = nome;
+        Email = email;
+        DataNascimento = dataNascimento;
+        Telefone = telefone;
+    }
 }

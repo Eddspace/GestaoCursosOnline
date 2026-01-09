@@ -15,4 +15,12 @@ public class InscricaoModel
     public int IdAluno { get; set; }
 
     public DateTime DataInscricao { get; set; }
+
+    public InscricaoModel(int idCurso, int idAluno, DateTime dataInscricao)
+    {
+        IdCurso = idCurso;
+        IdAluno = idAluno;
+        DataInscricao = dataInscricao;
+    }
+
 }

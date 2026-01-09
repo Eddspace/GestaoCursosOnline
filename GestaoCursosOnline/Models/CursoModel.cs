@@ -18,4 +18,22 @@ public class CursoModel
 
     public DateTime DataInicio { get; set; }
 
+    public CursoModel(string nome, string descricao, int cargaHoraria, DateTime dataInicio)
+    {
+        Nome = nome;
+        Descricao = descricao;
+        CargaHoraria = cargaHoraria;
+        DataInicio = dataInicio;
+    }
+
+    public CursoModel(int idCurso, string nome, string descricao, int cargaHoraria, DateTime dataInicio)
+    {
+        IdCurso = idCurso;
+        Nome = nome;
+        Descricao = descricao;
+        CargaHoraria = cargaHoraria;
+        DataInicio = dataInicio;
+    }
+
 }
+

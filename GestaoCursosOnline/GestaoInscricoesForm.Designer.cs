@@ -141,6 +141,7 @@
             btnEditarCurso.TabIndex = 5;
             btnEditarCurso.Text = "Editar\r\nCurso";
             btnEditarCurso.UseVisualStyleBackColor = false;
+            btnEditarCurso.Click += btnEditarCurso_Click;
             // 
             // btnNovoCurso
             // 
@@ -151,6 +152,7 @@
             btnNovoCurso.TabIndex = 4;
             btnNovoCurso.Text = "Novo\r\nCurso";
             btnNovoCurso.UseVisualStyleBackColor = false;
+            btnNovoCurso.Click += btnNovoCurso_Click;
             // 
             // monthCalendar
             // 
@@ -172,6 +174,7 @@
             btnCancelar.TabIndex = 7;
             btnCancelar.Text = "Cancelar\r\nIncrição";
             btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // gbInscricao
             // 
