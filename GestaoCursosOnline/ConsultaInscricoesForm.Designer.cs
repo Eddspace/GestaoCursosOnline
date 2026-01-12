@@ -44,6 +44,7 @@
             cbAlunos.Name = "cbAlunos";
             cbAlunos.Size = new Size(529, 25);
             cbAlunos.TabIndex = 0;
+            cbAlunos.SelectionChangeCommitted += cbAlunos_SelectionChangeCommitted;
             // 
             // lbCursosPorAluno
             // 
@@ -63,6 +64,7 @@
             btnNovaInscricao.TabIndex = 2;
             btnNovaInscricao.Text = "Nova\r\nInscrição";
             btnNovaInscricao.UseVisualStyleBackColor = false;
+            btnNovaInscricao.Click += btnNovaInscricao_Click;
             // 
             // btnRemoverInscricao
             // 
@@ -73,6 +75,7 @@
             btnRemoverInscricao.TabIndex = 3;
             btnRemoverInscricao.Text = "Remover\r\nInscrição";
             btnRemoverInscricao.UseVisualStyleBackColor = false;
+            btnRemoverInscricao.Click += btnRemoverInscricao_Click;
             // 
             // label1
             // 
@@ -88,9 +91,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(12, 77);
             label2.Name = "label2";
-            label2.Size = new Size(188, 17);
+            label2.Size = new Size(213, 17);
             label2.TabIndex = 5;
-            label2.Text = "Lista do Aluno Selecionado:";
+            label2.Text = "Inscrições do Aluno selecionado";
             // 
             // ConsultaInscricoesForm
             // 

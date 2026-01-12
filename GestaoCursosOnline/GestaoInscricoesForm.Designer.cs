@@ -205,6 +205,7 @@
             btnConcluirInscricao.TabIndex = 10;
             btnConcluirInscricao.Text = "Concluir\r\nInscrição";
             btnConcluirInscricao.UseVisualStyleBackColor = false;
+            btnConcluirInscricao.Click += btnConcluirInscricao_Click;
             // 
             // GestaoInscricoesForm
             // 

@@ -50,7 +50,6 @@ public partial class GestaoInscricoesForm : Form
             btnRemoverCurso.Enabled = true;
         }
 
-
     }
 
     private void btnCancelar_Click(object sender, EventArgs e)
@@ -81,8 +80,8 @@ public partial class GestaoInscricoesForm : Form
 
     }
 
-    private void btnRemoverCurso_Click(object sender, EventArgs e)
-    {
+    private void btnRemoverCurso_Click(object sender, EventArgs e) 
+    { //TODO - Disable removing Alunos & Cursos when they have a pending Inscrição
         if (lbCursos.SelectedItem != null)
         {
             CursoModel cursoSelecionado = (CursoModel)lbCursos.SelectedItem;
@@ -128,6 +127,23 @@ public partial class GestaoInscricoesForm : Form
         else
         {
             MessageBox.Show("Um aluno selecionado é necessario para fazer o processo de remoção, por favor crie um primeiro ou selecione um da lista em baixo", "Erro");
+        }
+    }
+
+    private void btnConcluirInscricao_Click(object sender, EventArgs e)
+    {
+        if (lbCursos.SelectedItem != null && lbAlunos.SelectedItem != null)
+        {
+            CursoModel cursoSelecionado = (CursoModel)lbCursos.SelectedItem;
+            AlunoModel alunoSelecionado = (AlunoModel)lbAlunos.SelectedItem;
+            InscricaoModel inscricaoModel = new InscricaoModel(cursoSelecionado.IdCurso, alunoSelecionado.IdAluno, monthCalendar.SelectionRange.Start);
+
+            sqlConnector.AssociarAlunoCurso(inscricaoModel);
+            WireUpLists();
+        }
+        else
+        {
+            MessageBox.Show("Verifique que selecionou ambos um curso e um aluno para fazer a inscrição", "Erro");
         }
     }
 }

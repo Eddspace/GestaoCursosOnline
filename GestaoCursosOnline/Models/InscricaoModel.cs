@@ -23,4 +23,12 @@ public class InscricaoModel
         DataInscricao = dataInscricao;
     }
 
+    public InscricaoModel(int idCurso_Aluno, int idCurso, int idAluno, DateTime dataInscricao)
+    {
+        IdCurso_Aluno = idCurso_Aluno;
+        IdCurso = idCurso;
+        IdAluno = idAluno;
+        DataInscricao = dataInscricao;
+    }
+
 }

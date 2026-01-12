@@ -18,6 +18,8 @@ public class CursoModel
 
     public DateTime DataInicio { get; set; }
 
+    public string nomeData { get { return $"{Nome} | Data de Inicio: {DataInicio.Day}/{DataInicio.Month}/{DataInicio.Year}"; } }
+
     public CursoModel(string nome, string descricao, int cargaHoraria, DateTime dataInicio)
     {
         Nome = nome;
