@@ -85,6 +85,7 @@
             btnConfirmar.TabIndex = 4;
             btnConfirmar.Text = "Confirmar";
             btnConfirmar.UseVisualStyleBackColor = false;
+            btnConfirmar.Click += btnConfirmar_Click;
             // 
             // btnCancelar
             // 
@@ -95,6 +96,7 @@
             btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // gb2
             // 
@@ -135,6 +137,7 @@
             // 
             // dtpDataNasc
             // 
+            dtpDataNasc.Format = DateTimePickerFormat.Custom;
             dtpDataNasc.Location = new Point(168, 28);
             dtpDataNasc.Name = "dtpDataNasc";
             dtpDataNasc.ShowUpDown = true;

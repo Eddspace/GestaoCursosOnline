@@ -25,4 +25,13 @@ public class AlunoModel
         DataNascimento = dataNascimento;
         Telefone = telefone;
     }
+
+    public AlunoModel(int idAluno, string nome, string email, DateTime dataNascimento, string telefone)
+    {
+        IdAluno = idAluno;
+        Nome = nome;
+        Email = email;
+        DataNascimento = dataNascimento;
+        Telefone = telefone;
+    }
 }

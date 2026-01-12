@@ -64,22 +64,26 @@
             // btnRemoverAluno
             // 
             btnRemoverAluno.BackColor = Color.WhiteSmoke;
+            btnRemoverAluno.Enabled = false;
             btnRemoverAluno.Location = new Point(265, 24);
             btnRemoverAluno.Name = "btnRemoverAluno";
             btnRemoverAluno.Size = new Size(113, 50);
             btnRemoverAluno.TabIndex = 3;
             btnRemoverAluno.Text = "Remover\r\nAluno";
             btnRemoverAluno.UseVisualStyleBackColor = false;
+            btnRemoverAluno.Click += btnRemoverAluno_Click;
             // 
             // btnEditarAluno
             // 
             btnEditarAluno.BackColor = Color.WhiteSmoke;
+            btnEditarAluno.Enabled = false;
             btnEditarAluno.Location = new Point(144, 24);
             btnEditarAluno.Name = "btnEditarAluno";
             btnEditarAluno.Size = new Size(113, 50);
             btnEditarAluno.TabIndex = 2;
             btnEditarAluno.Text = "Editar\r\nAluno";
             btnEditarAluno.UseVisualStyleBackColor = false;
+            btnEditarAluno.Click += btnEditarAluno_Click;
             // 
             // btnNovoAluno
             // 
@@ -90,6 +94,7 @@
             btnNovoAluno.TabIndex = 1;
             btnNovoAluno.Text = "Novo\r\nAluno";
             btnNovoAluno.UseVisualStyleBackColor = false;
+            btnNovoAluno.Click += btnNovoAluno_Click;
             // 
             // lbAlunos
             // 
@@ -116,6 +121,7 @@
             // btnRemoverCurso
             // 
             btnRemoverCurso.BackColor = Color.WhiteSmoke;
+            btnRemoverCurso.Enabled = false;
             btnRemoverCurso.Location = new Point(266, 24);
             btnRemoverCurso.Name = "btnRemoverCurso";
             btnRemoverCurso.Size = new Size(113, 50);
@@ -136,6 +142,7 @@
             // btnEditarCurso
             // 
             btnEditarCurso.BackColor = Color.WhiteSmoke;
+            btnEditarCurso.Enabled = false;
             btnEditarCurso.Location = new Point(145, 24);
             btnEditarCurso.Name = "btnEditarCurso";
             btnEditarCurso.Size = new Size(113, 50);

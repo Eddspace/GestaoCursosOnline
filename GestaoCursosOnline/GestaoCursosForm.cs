@@ -65,13 +65,8 @@ public partial class GestaoCursosForm : Form
                 formAnterior.WireUpLists();
                 this.Close();
             }
-            else
-            {
-                MessageBox.Show("Este curso tem informação invalida, por favor verifique os campos inseridos", "Erro, Informação invalida");
-            }
         }
-
-        if (!NovoCurso) //ou seja quando estamos a editar um curso
+        else //quando estamos a editar um curso
         {
             if (ValidarValores())
             {
@@ -79,10 +74,6 @@ public partial class GestaoCursosForm : Form
                 connector.AtualizarCurso(model);
                 formAnterior.WireUpLists();
                 this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Este curso tem informação invalida, por favor verifique os campos inseridos", "Erro, Informação invalida");
             }
         }
     }
@@ -95,24 +86,28 @@ public partial class GestaoCursosForm : Form
         if (tbNome.Text == string.Empty)
         {
             valido = false;
+            MessageBox.Show("O nome deste curso é invalido, por favor verifique a informação inserida", "Erro, Informação invalida");
         }
 
         //validar Descrição
         else if (tbDesc.Text == string.Empty)
         {
             valido = false;
+            MessageBox.Show("O descrição deste curso é invalido, por favor verifique a informação inserida", "Erro, Informação invalida");
         }
 
         //validar CargaHoraria
-        else if (nudCarga.Value == null || nudCarga.Value <= 0)
+        else if (nudCarga.Value <= 0)
         {
             valido = false;
+            MessageBox.Show("A carga horaria deste curso é invalida, por favor verifique a informação inserida", "Erro, Informação invalida");
         }
 
         //validar DataInicio
         else if (dtpDataInicio.Value == null)
         {
             valido = false;
+            MessageBox.Show("A data de inicio deste curso é invalida, por favor verifique a informação inserida", "Erro, Informação invalida");
         }
 
         return valido;
