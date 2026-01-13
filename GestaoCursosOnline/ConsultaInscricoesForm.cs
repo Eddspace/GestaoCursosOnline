@@ -30,7 +30,6 @@ public partial class ConsultaInscricoesForm : Form
 
     public void WireUpAluno()
     {
-        //TODO - WireUpAlunos when returning to this form from GestaoInscriçoes
         alunos = sqlConnector.ListarAlunos();
         cbAlunos.DataSource = null;
         cbAlunos.DataSource = alunos;
@@ -39,26 +38,42 @@ public partial class ConsultaInscricoesForm : Form
 
     public void WireUpCursos()
     {
-        AlunoModel alunoSelecionado = (AlunoModel)cbAlunos.SelectedItem;
-        inscricoes = sqlConnector.ListarCursosPorAluno(alunoSelecionado);
-        cursos = sqlConnector.ListarCursos();
-
-        List<CursoModel> cursosInscritos = new List<CursoModel>();
-        lbCursosPorAluno.DataSource = null;
-
-        foreach (var c in cursos)
+        if (cbAlunos.SelectedItem != null)
         {
-            foreach (var i in inscricoes)
+            AlunoModel alunoSelecionado = (AlunoModel)cbAlunos.SelectedItem;
+            inscricoes = sqlConnector.ListarCursosPorAluno(alunoSelecionado);
+            cursos = sqlConnector.ListarCursos();
+
+            List<CursoModel> cursosInscritos = new List<CursoModel>();
+            lbCursosPorAluno.DataSource = null;
+
+            foreach (var c in cursos)
             {
-                if (c.IdCurso == i.IdCurso)
+                foreach (var i in inscricoes)
                 {
-                    cursosInscritos.Add(c);
+                    if (c.IdCurso == i.IdCurso)
+                    {
+                        cursosInscritos.Add(c);
+                    }
                 }
             }
-        }
 
-        lbCursosPorAluno.DataSource = cursosInscritos;
-        lbCursosPorAluno.DisplayMember = "nomeData";
+            lbCursosPorAluno.DataSource = cursosInscritos;
+            lbCursosPorAluno.DisplayMember = "nomeData";
+
+            if (cursosInscritos.Count != 0)
+            {
+                btnRemoverInscricao.Enabled = true;
+            }
+            else
+            {
+                btnRemoverInscricao.Enabled = false;
+            }
+        }
+        else
+        {
+            lbCursosPorAluno.DataSource = null;
+        }
 
     }
 
@@ -72,8 +87,10 @@ public partial class ConsultaInscricoesForm : Form
 
     private void btnNovaInscricao_Click(object sender, EventArgs e)
     {
-        GestaoInscricoesForm gif = new GestaoInscricoesForm();
-        gif.Show();
+        cbAlunos.DataSource = null;
+        lbCursosPorAluno.DataSource = null;
+        GestaoInscricoesForm gif = new GestaoInscricoesForm(this);
+        gif.Show(this);
     }
 
     private void btnRemoverInscricao_Click(object sender, EventArgs e)
@@ -93,10 +110,18 @@ public partial class ConsultaInscricoesForm : Form
             WireUpCursos();
 
         }
+        else
+        {
+            MessageBox.Show("Não é possivel remover uma reserva deste aluno pois não existem reservas", "Erro");
+        }
 
     }
 
-    
-
-    
+    private void cbAlunos_DropDown(object sender, EventArgs e)
+    {
+        if (cbAlunos.SelectedItem == null)
+        {
+            WireUpAluno();
+        }
+    }
 }

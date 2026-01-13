@@ -103,7 +103,7 @@
             lbAlunos.Location = new Point(23, 84);
             lbAlunos.Name = "lbAlunos";
             lbAlunos.Size = new Size(355, 276);
-            lbAlunos.TabIndex = 0;
+            lbAlunos.TabIndex = 4;
             // 
             // gbCursos
             // 
@@ -125,7 +125,7 @@
             btnRemoverCurso.Location = new Point(266, 24);
             btnRemoverCurso.Name = "btnRemoverCurso";
             btnRemoverCurso.Size = new Size(113, 50);
-            btnRemoverCurso.TabIndex = 6;
+            btnRemoverCurso.TabIndex = 7;
             btnRemoverCurso.Text = "Remover\r\nCurso";
             btnRemoverCurso.UseVisualStyleBackColor = false;
             btnRemoverCurso.Click += btnRemoverCurso_Click;
@@ -137,7 +137,7 @@
             lbCursos.Location = new Point(24, 84);
             lbCursos.Name = "lbCursos";
             lbCursos.Size = new Size(355, 276);
-            lbCursos.TabIndex = 1;
+            lbCursos.TabIndex = 8;
             // 
             // btnEditarCurso
             // 
@@ -146,7 +146,7 @@
             btnEditarCurso.Location = new Point(145, 24);
             btnEditarCurso.Name = "btnEditarCurso";
             btnEditarCurso.Size = new Size(113, 50);
-            btnEditarCurso.TabIndex = 5;
+            btnEditarCurso.TabIndex = 6;
             btnEditarCurso.Text = "Editar\r\nCurso";
             btnEditarCurso.UseVisualStyleBackColor = false;
             btnEditarCurso.Click += btnEditarCurso_Click;
@@ -157,7 +157,7 @@
             btnNovoCurso.Location = new Point(24, 24);
             btnNovoCurso.Name = "btnNovoCurso";
             btnNovoCurso.Size = new Size(113, 50);
-            btnNovoCurso.TabIndex = 4;
+            btnNovoCurso.TabIndex = 5;
             btnNovoCurso.Text = "Novo\r\nCurso";
             btnNovoCurso.UseVisualStyleBackColor = false;
             btnNovoCurso.Click += btnNovoCurso_Click;
@@ -179,8 +179,8 @@
             btnCancelar.Location = new Point(140, 320);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(113, 50);
-            btnCancelar.TabIndex = 7;
-            btnCancelar.Text = "Cancelar\r\nIncrição";
+            btnCancelar.TabIndex = 11;
+            btnCancelar.Text = "Voltar\r\nConsultas";
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
@@ -203,7 +203,7 @@
             btnConcluirInscricao.Name = "btnConcluirInscricao";
             btnConcluirInscricao.Size = new Size(113, 50);
             btnConcluirInscricao.TabIndex = 10;
-            btnConcluirInscricao.Text = "Concluir\r\nInscrição";
+            btnConcluirInscricao.Text = "Criar\r\nInscrição";
             btnConcluirInscricao.UseVisualStyleBackColor = false;
             btnConcluirInscricao.Click += btnConcluirInscricao_Click;
             // 

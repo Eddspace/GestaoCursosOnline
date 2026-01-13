@@ -82,7 +82,7 @@
             btnConfirmar.Location = new Point(12, 331);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(200, 64);
-            btnConfirmar.TabIndex = 4;
+            btnConfirmar.TabIndex = 5;
             btnConfirmar.Text = "Confirmar";
             btnConfirmar.UseVisualStyleBackColor = false;
             btnConfirmar.Click += btnConfirmar_Click;
@@ -93,7 +93,7 @@
             btnCancelar.Location = new Point(236, 331);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(200, 64);
-            btnCancelar.TabIndex = 5;
+            btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
@@ -114,7 +114,7 @@
             tbEmail.MaxLength = 45;
             tbEmail.Name = "tbEmail";
             tbEmail.Size = new Size(324, 25);
-            tbEmail.TabIndex = 1;
+            tbEmail.TabIndex = 2;
             // 
             // lblEmail
             // 
@@ -142,7 +142,7 @@
             dtpDataNasc.Name = "dtpDataNasc";
             dtpDataNasc.ShowUpDown = true;
             dtpDataNasc.Size = new Size(233, 25);
-            dtpDataNasc.TabIndex = 1;
+            dtpDataNasc.TabIndex = 3;
             dtpDataNasc.Value = new DateTime(2026, 1, 7, 0, 0, 0, 0);
             // 
             // lblDataNasc
@@ -170,7 +170,7 @@
             tbTele.MaxLength = 9;
             tbTele.Name = "tbTele";
             tbTele.Size = new Size(308, 25);
-            tbTele.TabIndex = 1;
+            tbTele.TabIndex = 4;
             // 
             // lblTele
             // 

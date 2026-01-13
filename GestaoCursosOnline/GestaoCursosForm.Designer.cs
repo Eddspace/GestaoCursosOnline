@@ -66,7 +66,7 @@
             nudCarga.Maximum = new decimal(new int[] { 5000, 0, 0, 0 });
             nudCarga.Name = "nudCarga";
             nudCarga.Size = new Size(274, 25);
-            nudCarga.TabIndex = 1;
+            nudCarga.TabIndex = 3;
             // 
             // lbCarga
             // 
@@ -93,7 +93,7 @@
             tbDesc.MaxLength = 45;
             tbDesc.Name = "tbDesc";
             tbDesc.Size = new Size(301, 25);
-            tbDesc.TabIndex = 1;
+            tbDesc.TabIndex = 2;
             // 
             // lbDesc
             // 
@@ -110,7 +110,7 @@
             btnCancelar.Location = new Point(236, 331);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(200, 64);
-            btnCancelar.TabIndex = 11;
+            btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
@@ -121,7 +121,7 @@
             btnConfirmar.Location = new Point(12, 331);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(200, 64);
-            btnConfirmar.TabIndex = 10;
+            btnConfirmar.TabIndex = 5;
             btnConfirmar.Text = "Confirmar";
             btnConfirmar.UseVisualStyleBackColor = false;
             btnConfirmar.Click += btnConfirmar_Click;
@@ -171,7 +171,7 @@
             dtpDataInicio.RightToLeft = RightToLeft.No;
             dtpDataInicio.ShowUpDown = true;
             dtpDataInicio.Size = new Size(274, 25);
-            dtpDataInicio.TabIndex = 1;
+            dtpDataInicio.TabIndex = 4;
             dtpDataInicio.Value = new DateTime(2026, 1, 7, 0, 0, 0, 0);
             // 
             // lbData

@@ -44,6 +44,7 @@
             cbAlunos.Name = "cbAlunos";
             cbAlunos.Size = new Size(529, 25);
             cbAlunos.TabIndex = 0;
+            cbAlunos.DropDown += cbAlunos_DropDown;
             cbAlunos.SelectionChangeCommitted += cbAlunos_SelectionChangeCommitted;
             // 
             // lbCursosPorAluno
@@ -62,13 +63,14 @@
             btnNovaInscricao.Name = "btnNovaInscricao";
             btnNovaInscricao.Size = new Size(159, 52);
             btnNovaInscricao.TabIndex = 2;
-            btnNovaInscricao.Text = "Nova\r\nInscrição";
+            btnNovaInscricao.Text = "Gerir\r\nInscrições";
             btnNovaInscricao.UseVisualStyleBackColor = false;
             btnNovaInscricao.Click += btnNovaInscricao_Click;
             // 
             // btnRemoverInscricao
             // 
             btnRemoverInscricao.BackColor = Color.WhiteSmoke;
+            btnRemoverInscricao.Enabled = false;
             btnRemoverInscricao.Location = new Point(382, 419);
             btnRemoverInscricao.Name = "btnRemoverInscricao";
             btnRemoverInscricao.Size = new Size(159, 52);

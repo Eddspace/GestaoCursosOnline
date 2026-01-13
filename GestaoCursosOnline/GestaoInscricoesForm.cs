@@ -17,13 +17,15 @@ namespace GestaoCursosOnline;
 public partial class GestaoInscricoesForm : Form
 {
     SqlConnector sqlConnector = new SqlConnector();
+    ConsultaInscricoesForm formConsulta;
     List<CursoModel> cursos;
     List<AlunoModel> alunos;
 
-    public GestaoInscricoesForm()
+    public GestaoInscricoesForm(ConsultaInscricoesForm cif)
     {
         InitializeComponent();
         WireUpLists();
+        formConsulta = cif;
     }
 
     public void WireUpLists()
@@ -38,22 +40,34 @@ public partial class GestaoInscricoesForm : Form
         lbCursos.DataSource = cursos;
         lbCursos.DisplayMember = "nome";
 
-        if (alunos != null)
+        if (alunos.Count != 0)
         {
             btnEditarAluno.Enabled = true;
             btnRemoverAluno.Enabled = true;
         }
+        else
+        {
+            btnEditarAluno.Enabled = false;
+            btnRemoverAluno.Enabled = false;
+        }
 
-        if (cursos != null)
+        if (cursos.Count != 0)
         {
             btnEditarCurso.Enabled = true;
             btnRemoverCurso.Enabled = true;
+        }
+        else
+        {
+            btnEditarCurso.Enabled = false;
+            btnRemoverCurso.Enabled = false;
         }
 
     }
 
     private void btnCancelar_Click(object sender, EventArgs e)
     {
+        formConsulta.WireUpAluno();
+        formConsulta.WireUpCursos();
         this.Close();
     }
 
@@ -81,12 +95,20 @@ public partial class GestaoInscricoesForm : Form
     }
 
     private void btnRemoverCurso_Click(object sender, EventArgs e) 
-    { //TODO - Disable removing Alunos & Cursos when they have a pending Inscrição
+    { 
         if (lbCursos.SelectedItem != null)
         {
             CursoModel cursoSelecionado = (CursoModel)lbCursos.SelectedItem;
-            sqlConnector.RemoverCurso(cursoSelecionado);
-            WireUpLists();
+            if (sqlConnector.ListarAlunosPorCurso(cursoSelecionado).Count != 0)
+            {
+                MessageBox.Show("Não é possivel remover um curso onde alunos já se encontram inscritos", "Erro");
+            }
+            else
+            {
+                sqlConnector.RemoverCurso(cursoSelecionado);
+                WireUpLists();
+            }
+                
         }
         else
         {
@@ -121,8 +143,15 @@ public partial class GestaoInscricoesForm : Form
         if (lbAlunos.SelectedItem != null)
         {
             AlunoModel alunoSelecionado = (AlunoModel)lbAlunos.SelectedItem;
-            sqlConnector.RemoverAluno(alunoSelecionado);
-            WireUpLists();
+            if (sqlConnector.ListarCursosPorAluno(alunoSelecionado).Count != 0)
+            {
+                MessageBox.Show("Não é possivel remover um aluno que se encontra inscrito num curso", "Erro");
+            }
+            else
+            {
+                sqlConnector.RemoverAluno(alunoSelecionado);
+                WireUpLists();
+            }  
         }
         else
         {
@@ -137,9 +166,29 @@ public partial class GestaoInscricoesForm : Form
             CursoModel cursoSelecionado = (CursoModel)lbCursos.SelectedItem;
             AlunoModel alunoSelecionado = (AlunoModel)lbAlunos.SelectedItem;
             InscricaoModel inscricaoModel = new InscricaoModel(cursoSelecionado.IdCurso, alunoSelecionado.IdAluno, monthCalendar.SelectionRange.Start);
+            List<InscricaoModel> inscricoesDoAluno = sqlConnector.ListarCursosPorAluno(alunoSelecionado);
+            bool Repeat = false;
 
-            sqlConnector.AssociarAlunoCurso(inscricaoModel);
-            WireUpLists();
+            foreach (var insc in inscricoesDoAluno)
+            {
+                if (insc.IdCurso == inscricaoModel.IdCurso)
+                {
+                    Repeat = true;
+                }
+            }
+
+            if (Repeat)
+            {
+                MessageBox.Show("O aluno já tem uma inscrição ativa para este curso", "Erro");
+            }
+            else
+            {
+                sqlConnector.AssociarAlunoCurso(inscricaoModel);
+                WireUpLists();
+                MessageBox.Show("Inscrição criada com sucesso");
+            }
+
+
         }
         else
         {
