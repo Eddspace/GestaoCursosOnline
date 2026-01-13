@@ -22,12 +22,15 @@ public partial class ConsultaInscricoesForm : Form
     {
         InitializeComponent();
         WireUpAluno();
-        if (alunos != null)
+        if (alunos != null) //se já existirem alunos na dropbox durante a inicialização, caregamos tambem os elementos da lista de cursos
         {
             WireUpCursos();
         }
     }
 
+    /// <summary>
+    /// Função que faz a pesquisa ao sql pelos alunos existentes e depois atualiza os dados da dropbox dos alunos
+    /// </summary>
     public void WireUpAluno()
     {
         alunos = sqlConnector.ListarAlunos();
@@ -36,48 +39,51 @@ public partial class ConsultaInscricoesForm : Form
         cbAlunos.DisplayMember = "nome";
     }
 
+    /// <summary>
+    /// Função que faz a pesquisa ao sql pelos cursos onde o aluno selecionado está inscrito e depois atualiza os dados da lista principal
+    /// </summary>
     public void WireUpCursos()
     {
-        if (cbAlunos.SelectedItem != null)
+        if (cbAlunos.SelectedItem != null) //quando um aluno é selecionado na dropbox
         {
-            AlunoModel alunoSelecionado = (AlunoModel)cbAlunos.SelectedItem;
-            inscricoes = sqlConnector.ListarCursosPorAluno(alunoSelecionado);
-            cursos = sqlConnector.ListarCursos();
+            AlunoModel alunoSelecionado = (AlunoModel)cbAlunos.SelectedItem; //o aluno especificado
+            inscricoes = sqlConnector.ListarCursosPorAluno(alunoSelecionado); //todas as inscrições do aluno
+            cursos = sqlConnector.ListarCursos(); //todos os cursos existentes
 
-            List<CursoModel> cursosInscritos = new List<CursoModel>();
+            List<CursoModel> cursosInscritos = new List<CursoModel>(); //criamos uma lista temporaria onde vamos depois guardamos os cursos onde o aluno esta inscrito
             lbCursosPorAluno.DataSource = null;
 
-            foreach (var c in cursos)
+            foreach (var c in cursos) //por cada curso na lista total dos cursos
             {
-                foreach (var i in inscricoes)
+                foreach (var i in inscricoes) //por cada incrição que o aluno tem
                 {
-                    if (c.IdCurso == i.IdCurso)
+                    if (c.IdCurso == i.IdCurso) //verificamos se a inscrição é deste curso em particular
                     {
-                        cursosInscritos.Add(c);
+                        cursosInscritos.Add(c); //adicionamos o curso a lista temporaria
                     }
                 }
             }
 
-            lbCursosPorAluno.DataSource = cursosInscritos;
+            lbCursosPorAluno.DataSource = cursosInscritos; //listamos apenas os cursos onde o aluno esta inscrito (e não as inscrições em si)
             lbCursosPorAluno.DisplayMember = "nomeData";
 
-            if (cursosInscritos.Count != 0)
+            if (cursosInscritos.Count != 0) //se o aluno estiver inscrito em qualquer curso
             {
-                btnRemoverInscricao.Enabled = true;
+                btnRemoverInscricao.Enabled = true; //o botão de remover cursos fica premivel
             }
             else
             {
-                btnRemoverInscricao.Enabled = false;
+                btnRemoverInscricao.Enabled = false; //se não for esse o caso, desativamos o botão
             }
         }
         else
         {
-            lbCursosPorAluno.DataSource = null;
+            lbCursosPorAluno.DataSource = null; //caso não exista aluno selecionado, limpamos a lista de inscrições
         }
 
     }
 
-    private void cbAlunos_SelectionChangeCommitted(object sender, EventArgs e)
+    private void cbAlunos_SelectionChangeCommitted(object sender, EventArgs e) //quando o utilizador seleciona algum valor na dropbox
     {
         if (cbAlunos.SelectedItem != null)
         {
@@ -85,7 +91,7 @@ public partial class ConsultaInscricoesForm : Form
         }
     }
 
-    private void btnNovaInscricao_Click(object sender, EventArgs e)
+    private void btnNovaInscricao_Click(object sender, EventArgs e) //limpamos as listas deste form e abrimos o gestor de inscrições
     {
         cbAlunos.DataSource = null;
         lbCursosPorAluno.DataSource = null;
@@ -97,13 +103,13 @@ public partial class ConsultaInscricoesForm : Form
     {
         if (lbCursosPorAluno.SelectedItem != null)
         {
-            CursoModel cursoSelecionado = (CursoModel)lbCursosPorAluno.SelectedItem;
+            CursoModel cursoSelecionado = (CursoModel)lbCursosPorAluno.SelectedItem; //como a lista de inscrições demonstra cursos em vez de inscrições
 
-            foreach (var i in inscricoes)
+            foreach (var i in inscricoes) //por cada inscrição do aluno selecionado
             {
-                if (cursoSelecionado.IdCurso == i.IdCurso)
+                if (cursoSelecionado.IdCurso == i.IdCurso) //verificamos se a inscrição corresponde ao curso selecionado
                 {
-                    sqlConnector.RemoverAlunoCurso(i);
+                    sqlConnector.RemoverAlunoCurso(i); //removemos todos os resultados, pois um aluno não pode estar inscrito no mesmo curso multiplas vezes
                 }
             }
 
@@ -117,8 +123,9 @@ public partial class ConsultaInscricoesForm : Form
 
     }
 
-    private void cbAlunos_DropDown(object sender, EventArgs e)
+    private void cbAlunos_DropDown(object sender, EventArgs e) 
     {
+        //no caso do utilizador fechar o gestor de inscrições não devidamente, para evitar erros, populamos a lista de alunos quando a dropbox é selecionada
         if (cbAlunos.SelectedItem == null)
         {
             WireUpAluno();
